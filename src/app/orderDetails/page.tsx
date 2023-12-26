@@ -2,7 +2,7 @@ import OrderDetailsComponent from '@/components/OrderDetails/OrderDetailsCompone
 import React from 'react'
 
 const fetchOrderDetails = async () => {
-    const response = await fetch('http://localhost:3000/api/orderDetails', {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/orderDetails`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

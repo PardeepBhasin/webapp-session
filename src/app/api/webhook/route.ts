@@ -36,7 +36,7 @@ export async function POST(req: Request, res: Response) {
                 const orderData = await cartModel.find({ id: { $in: cartIds } });
                 console.log("orderData+++++++++++", orderData);
                 if (orderData) {
-                    await fetch('http://localhost:3000/api/saveOrderDetails', {
+                    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/saveOrderDetails`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

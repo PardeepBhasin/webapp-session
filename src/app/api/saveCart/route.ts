@@ -11,7 +11,7 @@ export async function POST(req: Request, res: Response) {
     const token = authHeader?.split(' ')[1];
     const body = await req.json();
     try {
-        await fetch('http://localhost:3000/api/verifyToken', {
+        await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/verifyToken`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

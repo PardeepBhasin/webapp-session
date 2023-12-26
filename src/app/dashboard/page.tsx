@@ -4,7 +4,7 @@ import { MenuIcon } from 'lucide-react';
 
 const getProducts = async () => {
     // TODO - Send token as authorization header with Bearer
-    const response = await fetch('http://localhost:3000/api/fetchProducts', {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/fetchProducts`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

@@ -18,7 +18,7 @@ const AddToCart = (item: z.infer<typeof cartSchemaValidator>) => {
         }
         const token = session?.user.accessToken;
         setLoader(true);
-        const response = await fetch('http://localhost:3000/api/saveCart', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/saveCart`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

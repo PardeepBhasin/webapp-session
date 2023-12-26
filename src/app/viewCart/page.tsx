@@ -16,7 +16,7 @@ function ViewCartComponent() {
     useEffect(() => {
         const fetchCart = async () => {
             ref.current = true;
-            const response = await fetch('http://localhost:3000/api/fetchCart', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/fetchCart`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ function ViewCartComponent() {
     useEffect(() => {
         if (cartDetails) {
             // Create PaymentIntent as soon as the page loads
-            fetch('http://localhost:3000/api/createPaymentIntent', {
+            fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/createPaymentIntent`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(cartDetails),
