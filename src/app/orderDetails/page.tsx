@@ -19,7 +19,7 @@ const OrderDetails = async () => {
         <div>
             {
                 data && data.map((item: any) => {
-                    return <OrderDetailsComponent {...item} />
+                    return <OrderDetailsComponent key={Math.random()} {...item} />
                 })
             }
         </div>

@@ -55,7 +55,7 @@ function ViewCartComponent() {
                     {
                         cartData && cartData.map((item: any) => {
                             return (
-                                <div className='grid grid-cols-3'>
+                                <div key={Math.random()} className='grid grid-cols-3'>
                                     <Image src={item.image} width={80} height={40} alt="Cart Image" />
                                     <div>{item.name}</div>
                                     <div>{item.price}</div>

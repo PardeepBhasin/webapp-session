@@ -54,7 +54,7 @@ const Dashboard = async () => {
             <div className='w-3/4 grid grid-cols-4 gap-2'>
                 {
                     data && data.map((item: any) => {
-                        return <ProductCardComponent item={item} />
+                        return <ProductCardComponent key={Math.random()} item={item} />
                     })
                 }
             </div>

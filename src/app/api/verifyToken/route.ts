@@ -1,5 +1,5 @@
 import { headers } from 'next/headers';
-import jose from 'jose';
+import { createRemoteJWKSet, jwtVerify } from 'jose';
 import { NextResponse } from 'next/server';
 
 export async function POST() {
@@ -13,8 +13,8 @@ export async function POST() {
         })
     }
     try {
-        const JWKS = jose.createRemoteJWKSet(new URL('https://www.googleapis.com/oauth2/v3/certs'))
-        await jose.jwtVerify(token?.toString(), JWKS, {
+        const JWKS = createRemoteJWKSet(new URL('https://www.googleapis.com/oauth2/v3/certs'))
+        await jwtVerify(token?.toString(), JWKS, {
             issuer: 'urn:example:issuer',
             audience: 'urn:example:audience',
         })
