@@ -1,5 +1,6 @@
 import ProductCardComponent from '@/components/ProductCard/ProductCard';
 import { MenuIcon } from 'lucide-react';
+import { getServerSession } from 'next-auth';
 
 const getProducts = async () => {
   // TODO - Send token as authorization header with Bearer
@@ -13,7 +14,11 @@ const getProducts = async () => {
   return data;
 }
 export default async function Home() {
-  const data = await getProducts();
+  let data = [];
+  const session = await getServerSession();
+  if (session) {
+    data = await getProducts();
+  }
   return (
     <div className='flex gap-4 m-2'>
       <div className='w-1/4 flex flex-col gap-3'>

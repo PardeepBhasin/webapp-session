@@ -1,4 +1,5 @@
 import OrderDetailsComponent from '@/components/OrderDetails/OrderDetailsComponent';
+import { getServerSession } from 'next-auth';
 import React from 'react'
 
 const fetchOrderDetails = async () => {
@@ -13,6 +14,16 @@ const fetchOrderDetails = async () => {
     return data;
 }
 const OrderDetails = async () => {
+    const session = await getServerSession();
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        }
+
+    }
     const data = await fetchOrderDetails();
     console.log('fetchOrderDetails called', data);
     return (

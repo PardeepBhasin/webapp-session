@@ -1,6 +1,7 @@
 import ProductCardComponent from '@/components/ProductCard/ProductCard';
 import React from 'react';
 import { MenuIcon } from 'lucide-react';
+import { getServerSession } from 'next-auth';
 
 const getProducts = async () => {
     // TODO - Send token as authorization header with Bearer
@@ -14,6 +15,16 @@ const getProducts = async () => {
     return data;
 }
 const Dashboard = async () => {
+    const session = await getServerSession();
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        }
+
+    }
     const data = await getProducts();
     return (
         <div className='flex gap-4 m-2'>
