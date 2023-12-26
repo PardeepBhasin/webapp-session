@@ -22,7 +22,7 @@ export async function POST(req: Request, res: Response) {
         try {
             const validatedData = cartSchemaValidator.safeParse(body);
             if (!validatedData.success) {
-                return NextResponse.json('schema validation fails', {
+                return NextResponse.json(`schema validation fails, ${validatedData}`, {
                     status: 400,
                     statusText: 'failure'
                 })
