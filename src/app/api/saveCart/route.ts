@@ -18,7 +18,7 @@ export async function POST(req: Request, res: Response) {
                 'Authorization': `Bearer ${token}`
             }
         });
-        console.log("Token verified successfully");
+        console.log("Token verified successfully.");
         try {
             const validatedData = cartSchemaValidator.safeParse(body);
             if (!validatedData.success) {
